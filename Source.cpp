@@ -26,8 +26,10 @@ float secant(float function(float), float x_prev, float x, const float e = 0.01)
 		x = (x - function(x) * (x - x_prev) / (function(x) - function(x_prev)));
 		x_prev = x;
 	}
+	cout << "Количество итераций: " << count << endl;
 	return x;
 }
+
 float iterations(float phi(float), float a, const float e = 0.01) {
 	int i = 1;
 	float x = phi(a);
@@ -44,6 +46,7 @@ float iterations(float phi(float), float a, const float e = 0.01) {
 	cout << "Количество итераций: " << i << endl;
 	return x0;
 }
+
 float newton(float function(float), float fprime(float), float fprime2(float), float a, float b, const float e = 0.01) {
 	
 	int count = 0;
@@ -51,24 +54,25 @@ float newton(float function(float), float fprime(float), float fprime2(float), f
 	float x = 0;
 
 	if (function(a) * fprime2(a) > 0) {
-		float x0 = a;
+		x0 = a;
 	}
 	else if (function(b) * fprime2(b) > 0) {
-		float x0 = b;
+		x0 = b;
 	}
 	else {
 		cout << "Неверно выбран начальный интервал" << endl;
 		return 0;
 	}
-	x = x0 - function(x0) / fprime(x0);
+	x = x0 - (function(x0) / fprime(x0));
 	while (abs(x - x0) >= e) {
 		count++;
-		x0 = x - function(x) / fprime(x);
-		x = x0 - function(x0) / fprime(x0);
+		x0 = x - (function(x) / fprime(x));
+		x = x0 - (function(x0) / fprime(x0));
 	}
 	cout << "Количество итераций: " << count << endl;
 	return x;
 }
+
 float bisections(float function(float), float a, float b, const float e = 0.01) {
 	int count = 0;
 	if (function(a) * function(b) > 0){
