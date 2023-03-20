@@ -4,19 +4,19 @@
 using namespace std;
 
 float function(float x) {
-	return 3 * sin(x) - pow(x, 2) + 4;
+	return 0.3 * exp(-0.7 * sqrt(x)) - 2 * pow(x, 2) + 4;
 }
 
 float fprime(float x) {
-	return 3 * cos(x) - 2 * x;
+	return -21 / (200 * exp((7.0 / 10.0) * sqrt(x) * sqrt(x))) - 4 * x;
 }
 
 float fprime2(float x) {
-	return -3 * sin(x) - 2;
+	return ((147 * exp((7.0 / 10.0) * sqrt(x)) * sqrt(x) + 210 * exp((7.0 / 10.0) * sqrt(x))) / (4000 * exp((7.0 / 5.0) * x * sqrt(x)))) - 4;
 }
 
 float phi(float x) {
-	return sqrt(3 * sin(x) + 4);
+	return sqrt((0.3 * exp(-0.7 * sqrt(x)) + 4) / 2);
 }
 
 float secant(float function(float), float x_prev, float x, const float e = 0.01) {
